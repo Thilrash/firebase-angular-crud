@@ -94,6 +94,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "firebase-angular-crud:build:production",
+            "firebaseProject": "student-managment-system-831d1",
+            "firebaseHostingSite": "student-managment-system-831d1"
+          }
         }
       }
     }
