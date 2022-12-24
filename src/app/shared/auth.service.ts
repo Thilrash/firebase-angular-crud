@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +67,17 @@ export class AuthService {
         this.router.navigate(['/verify-email']);
       }, (err: any) => {
         alert('Something went wrong. Not able to send to your email');
+      });
+  }
+
+  // sign in with google account
+  signInWithGoogle() {
+    return this.fireAuth.signInWithPopup(new GoogleAuthProvider)
+      .then(res => {
+        this.router.navigate(['/dashboard']);
+        localStorage.setItem('token', JSON.stringify(res.user?.uid));
+      }, err => {
+        alert(err.message);
       });
   }
 }
