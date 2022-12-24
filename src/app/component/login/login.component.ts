@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // login
   login() {
     if(this.email == '') {
       alert('Please enter email');
@@ -30,5 +31,10 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.email, this.password);
     this.email = '';
     this.password = '';
+  }
+
+  // sign in with google account
+  signInWithGoogle() {
+    this.auth.signInWithGoogle();
   }
 }
